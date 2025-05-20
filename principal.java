@@ -5,6 +5,7 @@ public class principal {
 
      static List<producto> productos= new ArrayList<>();
      static Scanner scan= new Scanner(System.in);
+     static int id=0;
 
     public static void main(String[] args) {
        int opcion;
@@ -38,10 +39,11 @@ public class principal {
             int precio = scan.nextInt();
 
             if(articulo!=""){
-                producto productoNuevo= new producto(articulo, precio, 0);
+                id++;
+                producto productoNuevo= new producto(articulo, precio, id);
                 productos.add(productoNuevo);
-                System.out.println("Articulo "+articulo+ " agregado");
-                System.out.println(productos);
+                System.out.println("Articulo "+ productoNuevo
+                + " agregado");
             }
             else{
                 System.out.println("No puede ingresar articulo sin nombre");
@@ -64,20 +66,20 @@ public class principal {
         }
 
         public static void modificarArticulo(){
-            System.out.println("Ingrese el nombre del articulo a modificar");
-            String nombreProducto= scan.nextLine();
+            System.out.println("Ingrese el id del producto a modificar");
+            int idProducto= scan.nextInt();
 
             for(producto p: productos){
-            System.out.println("Ingrese el nuevo nombre al producto: ");
-            String nuevoNombreProducto= scan.nextLine();
 
-            if(p.nombre==(nombreProducto)){
-                System.out.println("producto "+ nombreProducto +" existente");
-                p.setNombre(nuevoNombreProducto);
-                System.out.println("nombre de Producto "+nombreProducto+ "cambiado a "+ nuevoNombreProducto);
-            }
+               if(p.id==(idProducto)){
+                    scan.nextLine();
+                    System.out.println("Ingrese el nuevo nombre al producto "+ p.nombre+" : ");
+                    String nuevoNombreProducto= scan.nextLine();
+                    p.setNombre(nuevoNombreProducto);
+                    System.out.println("nombre de Producto "+idProducto+ "cambiado a "+ nuevoNombreProducto);
+                }
         }
-            System.out.println("No existe producto "+ nombreProducto);
+            System.out.println("No existe producto "+ idProducto);
         
         }
 
