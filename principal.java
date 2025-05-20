@@ -24,7 +24,7 @@ public class principal {
                 case 1 -> crearArticulo();
                 case 2 -> listarArticulos(); 
                 case 3 -> modificarArticulo();
-                case 4 -> System.out.println("eliminarArticulo()");
+                case 4 -> eliminarArticulo();
                 case 5 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción inválida");
             }
@@ -82,6 +82,17 @@ public class principal {
             System.out.println("No existe producto "+ idProducto);
         
         }
+
+public static void eliminarArticulo(){
+
+    System.out.println("Ingrese el id del producto a eliminar: ");
+    int idEliminar= scan.nextInt();
+
+    productos.removeIf(producto -> producto.id==idEliminar);
+    System.out.println("Articulo eliminado");
+
+
+}
 
 
 }
